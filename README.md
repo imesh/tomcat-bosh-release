@@ -57,29 +57,51 @@ A BOSH release for deploying Apache Tomcat on BOSH implemented based on [cf-plat
     bosh -e vbox -n upload-blobs
     ```
 
-* Create the bosh release:
+* Create the Tomcat bosh release:
 
     ```bash
     bosh -e vbox create-release --force
     ```
 
-* Upload the bosh release to bosh:
+* Upload the Tomcat bosh release to BOSH Director:
 
     ```bash
     bosh -e vbox upload-release
     ```
 
-* Download latest bosh-lite warden stemcell from bosh.io and upload it to bosh:
+* Download latest bosh-lite warden stemcell from bosh.io and upload it to BOSH Director:
     
     ```bash
     wget https://s3.amazonaws.com/bosh-core-stemcells/warden/bosh-stemcell-3445.7-warden-boshlite-ubuntu-trusty-go_agent.tgz
     bosh -e vbox upload-stemcell bosh-stemcell-3445.7-warden-boshlite-ubuntu-trusty-go_agent.tgz
     ```
 
-* Deploy the manifest
+* Deploy the Tomcat bosh release manifest in BOSH Director:
 
     ```bash
     bosh -e vbox -d tomcat deploy tomcat-manifest.yml
+    ```
+
+* Add route to VirtualBox network:
+
+    ```
+    sudo route add -net 10.244.0.0/16 192.168.50.6 # Mac OS X
+    sudo route add -net 10.244.0.0/16 gw 192.168.50.6 # Linux
+    route add 10.244.0.0/16 192.168.50.6 # Windows
+    ```
+    
+* Find the VM IP address via the bosh CLI and access the Tomcat web UI via a web browser:
+
+    ```bash
+    bosh -e vbox vms
+    ...
+
+    Deployment 'tomcat'
+    Instance                                     Process State  AZ  IPs           VM CID                                VM Type
+    tomcat/3bec9879-f727-4f5d-ad8e-3a063ba93de3  running        -   10.244.15.21  a7481310-e2f1-4060-4aef-34b1439df1e1  tomcat-resource-pool
+    ...
+
+    # Tomcat UI URL: http://10.244.15.21:8080/
     ```
 
 ## References
