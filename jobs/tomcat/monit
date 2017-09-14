@@ -1,0 +1,7 @@
+check process tomcat
+  with pidfile /var/vcap/sys/run/tomcat/pid
+  start program "/var/vcap/jobs/tomcat/bin/ctl start"
+    with timeout 100 seconds
+  stop program "/var/vcap/jobs/tomcat/bin/ctl stop"
+    with timeout 30 seconds
+  group vcap

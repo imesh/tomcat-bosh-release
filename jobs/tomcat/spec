@@ -1,0 +1,42 @@
+---
+name: tomcat
+templates:
+  ctl.erb: bin/ctl
+
+
+packages:
+- openjdk
+- tomcat
+- common
+properties:
+  tomcat.listen_port:
+    description: "Listen Port of the Tomcat instance"
+    default: 8080
+  tomcat.memory.min_heap:
+    description: "Min Heap in MB"
+    default: 2048
+  tomcat.memory.max_heap:
+    description: "Max Heap in MB"
+    default: 2048
+  tomcat.memory.max_permgen:
+    description: "Max permgen in MB"
+    default: 1024
+
+  tomcat.password:
+    description: tomcat password
+  tomcat.username:
+    description: tomcat username
+  tomcat.address:
+    description: tomcat address
+
+
+  cf.apps_domain:
+    description: Domain shared by the UAA and CF API eg 'bosh-lite.com'
+  cf.nats.host:
+    description: Hostname/IP of NATS
+  cf.nats.port:
+    description: Port that NATS listens on
+  cf.nats.username:
+    description: The user to use when authenticating with NATS
+  cf.nats.password:
+    description: The password to use when authenticating with NATS

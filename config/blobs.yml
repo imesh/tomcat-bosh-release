@@ -1,0 +1,8 @@
+openjdk/openjdk-1.7.0_51.tar.gz:
+  size: 67068679
+  object_id: f086868d-17b3-40d3-4879-685f7a8baf81
+  sha: 50b4cb06612a3fd0306f87e3a6ab6fcb355a1559
+tomcat/tomcat-8.5.5.tar.gz:
+  size: 9288112
+  object_id: a9afafe5-cf46-474c-46c0-f6562636a076
+  sha: c711901edaa4497dc45f03747896b771a0aea4fd
