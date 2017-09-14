@@ -81,3 +81,8 @@ A BOSH release for deploying Apache Tomcat on BOSH implemented based on [cf-plat
     ```bash
     bosh -e vbox -d tomcat deploy tomcat-manifest.yml
     ```
+
+## References
+
+* [A Guide to Using BOSH](http://mariash.github.io/learn-bosh/)
+* [BOSH Lite](https://bosh.io/docs/bosh-lite.html)
